@@ -11,23 +11,6 @@ namespace Modul2
 
         }
 
-        public static string GetName()
-        {
-            Console.Write("What is your name? ");
-            return Console.ReadLine();
-        }
-
-        public static int GetAge()
-        {
-            Console.Write("How old are you? ");
-            return Convert.ToInt32(Console.ReadLine());
-        }
-
-        public static string GetCharacter()
-        {
-            Console.Write("What is your favorite character? ");
-            return Console.ReadLine();
-        }
 
         static void Fruits()
         {
@@ -48,13 +31,13 @@ namespace Modul2
             var fruit3 = Console.ReadLine();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("You entered the fruits: " +fruit1 +", " + fruit2 + ", " + fruit3 +". \n");
+            Console.Write("You entered the fruits: " + fruit1 + ", " + fruit2 + ", " + fruit3 + ". \n");
             Console.WriteLine("You entered the fruits: {0}, {1}, {2}.", fruit1, fruit2, fruit3);
             Console.WriteLine($"You entered the fruits: {fruit1}, {fruit2}, {fruit3}.");
 
         }
         static void WorkingWithTypes()
-        { 
+        {
             var userName = GetName();
             var age = GetAge();
             var character = GetCharacter();
@@ -66,10 +49,10 @@ namespace Modul2
             Console.WriteLine("Thank you!");
             Console.WriteLine("Your name is: " + userName);
             Console.WriteLine("You have " + yearsUntilPension + " years until pension");
-            
+
 
             bool youLikeNumbers = true;
-            
+
             foreach (var chara in character)
             {
                 if (char.IsDigit(chara))
@@ -82,7 +65,7 @@ namespace Modul2
                 }
                 else
                     Console.WriteLine("You like special characters");
-                
+
             }
             Console.WriteLine("Your favorite character is: " + character);
             if (youLikeNumbers)
@@ -99,6 +82,24 @@ namespace Modul2
             Console.ResetColor();
 
         }
+        public static string GetName()
+        {
+            Console.Write("What is your name? ");
+            return Console.ReadLine();
+        }
+
+        public static int GetAge()
+        {
+            Console.Write("How old are you? ");
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+        public static string GetCharacter()
+        {
+            Console.Write("What is your favorite character? ");
+            return Console.ReadLine();
+        }
+
         static void WorkingWithStrings()
         {
             Console.Write("What is your name? ");
