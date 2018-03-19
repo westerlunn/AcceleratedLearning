@@ -36,13 +36,16 @@ namespace Modul2
         }
         static void WorkingWithTypes()
         {
+            //Här skulle man kunna göra en metod som heter "GetName" eller liknande, som anropas. 
             Console.Write("What is your name? ");
             var userName = Console.ReadLine();
 
+            //Samma som ovan, getAge()
             Console.Write("How old are you? ");
             var userAge = Convert.ToInt32(Console.ReadLine());
             var yearsUntilPension = 65 - userAge;
 
+            //Samma som ovan, getCharacter()
             Console.Write("What is your favorite character? ");
             var userFavoriteCharacter = Console.ReadLine();
 
@@ -52,7 +55,8 @@ namespace Modul2
             Console.WriteLine("You have " + yearsUntilPension + " years until pension");
 
             bool youLikeNumbers = true;
-
+            
+            //Här skulle man också kunna göra en metod
             foreach (var character in userFavoriteCharacter)
             {
                 if (char.IsDigit(character))
