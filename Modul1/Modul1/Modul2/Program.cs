@@ -40,7 +40,7 @@ namespace Modul2
         {
             var userName = GetName();
             var age = GetAge();
-            var character = GetCharacter();
+            var userFavoriteCharacter = GetCharacter();
 
             var yearsUntilPension = 65 - age;
 
@@ -53,13 +53,13 @@ namespace Modul2
 
             bool youLikeNumbers = true;
 
-            foreach (var chara in character)
+            foreach (var character in userFavoriteCharacter)
             {
-                if (char.IsDigit(chara))
+                if (char.IsDigit(character))
                 {
                     youLikeNumbers = true;
                 }
-                if (char.IsLetter(chara))
+                if (char.IsLetter(character))
                 {
                     youLikeNumbers = false;
                 }
@@ -67,7 +67,7 @@ namespace Modul2
                     Console.WriteLine("You like special characters");
 
             }
-            Console.WriteLine("Your favorite character is: " + character);
+            Console.WriteLine("Your favorite character is: " + userFavoriteCharacter);
             if (youLikeNumbers)
             {
                 Console.WriteLine("You like numbers");
