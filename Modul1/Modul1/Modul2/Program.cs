@@ -68,13 +68,13 @@ namespace Modul2
 
             bool youLikeNumbers = true;
             
-            foreach (var character in userFavoriteCharacter)
+            foreach (var chara in character)
             {
-                if (char.IsDigit(character))
+                if (char.IsDigit(chara))
                 {
                     youLikeNumbers = true;
                 }
-                if (char.IsLetter(character))
+                if (char.IsLetter(chara))
                 {
                     youLikeNumbers = false;
                 }
