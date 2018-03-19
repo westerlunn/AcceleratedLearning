@@ -25,7 +25,7 @@ namespace Modul2
 
         public static string GetCharacter()
         {
-            Console.Write("What is your favorite character?");
+            Console.Write("What is your favorite character? ");
             return Console.ReadLine();
         }
 
@@ -61,10 +61,12 @@ namespace Modul2
 
             var yearsUntilPension = 65 - age;
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             Console.WriteLine("Thank you!");
             Console.WriteLine("Your name is: " + userName);
             Console.WriteLine("You have " + yearsUntilPension + " years until pension");
+            
 
             bool youLikeNumbers = true;
             
@@ -82,7 +84,7 @@ namespace Modul2
                     Console.WriteLine("You like special characters");
                 
             }
-            Console.WriteLine("Your favorite character is: " + userFavoriteCharacter);
+            Console.WriteLine("Your favorite character is: " + character);
             if (youLikeNumbers)
             {
                 Console.WriteLine("You like numbers");
@@ -94,6 +96,8 @@ namespace Modul2
             else if (youLikeNumbers && youLikeNumbers == false)
                 Console.WriteLine("You can't decide");
             Console.WriteLine();
+            Console.ResetColor();
+
         }
         static void WorkingWithStrings()
         {
