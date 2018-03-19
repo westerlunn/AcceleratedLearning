@@ -1,0 +1,15 @@
+diff a/Modul1/Modul1/Modul2/Program.cs b/Modul1/Modul1/Modul2/Program.cs	(rejected hunks)
+@@ -74,11 +74,11 @@
+             {
+                 if (char.IsDigit(chara))
+                 {
+-                    youLikeNumbers = true;
++                    youLikeNumbers = false;
+                 }
+                 if (char.IsLetter(chara))
+                 {
+-                    youLikeNumbers = false;
++                    youLikeNumbers = true;
+                 }
+                 else
+                     Console.WriteLine("You like special characters");
