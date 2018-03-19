@@ -74,11 +74,11 @@ namespace Modul2
             {
                 if (char.IsDigit(chara))
                 {
-                    youLikeNumbers = true;
+                    youLikeNumbers = false;
                 }
                 if (char.IsLetter(chara))
                 {
-                    youLikeNumbers = false;
+                    youLikeNumbers = true;
                 }
                 else
                     Console.WriteLine("You like special characters");
