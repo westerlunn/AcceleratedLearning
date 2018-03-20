@@ -7,8 +7,13 @@ namespace Week2Modul6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Cube mycube = new Cube(2, 3, 4);
+            Cube supercube = new Cube(100, 200, 300);
 
+            mycube.WriteVolume();
+            supercube.WriteVolume();
+
+            /*
             Circle bob = new Circle("Bob", 8);
             Circle lisa = new Circle("Lisa", 30);
 
@@ -19,6 +24,7 @@ namespace Week2Modul6
 
             bob.WriteArea();
             lisa.WriteArea();
+            */
         }
     }
 
@@ -43,6 +49,25 @@ namespace Week2Modul6
         {
             double circleArea = Math.Pow(_radius, 2) * Math.PI;
             Console.WriteLine($"{circleArea:f2}");
+        }
+    }
+
+    class Cube
+    {
+        int _height;
+        int _width;
+        int _depth;
+
+        public Cube (int height, int width, int depth)
+        {
+            _height = height;
+            _width = width;
+            _depth = depth;
+        }
+        public void WriteVolume()
+        {
+            double cubeVolume = _height * _width * _depth;
+            Console.WriteLine($"The volume of the cube is {cubeVolume}");
         }
     }
 }
