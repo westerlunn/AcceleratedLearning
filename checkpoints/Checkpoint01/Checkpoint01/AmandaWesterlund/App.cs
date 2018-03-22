@@ -45,13 +45,10 @@ namespace Checkpoint01.AmandaWesterlund
         }
         public void Run()
         {
-            //Kalla på metoder för att köra version 2. //MakeStars(userNumber);
+            //Version3
+
+            //Kalla på metoder bredvid, efter den nedan, för att köra version 2. //MakeStars(userNumber);
             string[] userNumber = GreetUser();
-            
-
-
-            //Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
-            //var userNumber = Console.ReadLine().Split('-');
             
             foreach (var character in userNumber)
             {
@@ -61,7 +58,6 @@ namespace Checkpoint01.AmandaWesterlund
                     for (var i = 1; i <= number; i++)
                     {
                         WriteTopUpTriangle(i);
-                        
                     }
                 }
                 else if (character[0] == 'B')
