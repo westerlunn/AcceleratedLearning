@@ -42,24 +42,20 @@ namespace Checkpoint01.AmandaWesterlund
 
             Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
             var userNumber = Console.ReadLine().Split('-');
+            
 
             foreach (var character in userNumber)
             {
-                var number = Convert.ToInt32(character[1].ToString());
-
+                var number = Convert.ToInt32(character.Substring(1, character.Length - 1));
                 if (character[0] == 'A')
                 {
-                    /*
-                    var splitNumber = userNumber.ToString().Split('A');
-                    var defNumber = int.Parse(splitNumber.ToString());
-                    Console.WriteLine(defNumber);
-                    */
                     for (var i = 0; i <= number; i++)
                     {
                         for (var j = 0; j < i; j++)
                         {
                             Console.Write("*");
                         }
+
                         Console.WriteLine("");
                     }
                 }
