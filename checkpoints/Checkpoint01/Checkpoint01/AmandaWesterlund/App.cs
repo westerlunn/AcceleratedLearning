@@ -9,7 +9,7 @@ namespace Checkpoint01.AmandaWesterlund
     {
         static string[] GreetUser()
         {
-            Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
+            Console.Write("Write numbers separated by hyphens to make triangles of that size. Write A before the number to make a triangle with the top upwards, and write B to make a triangle with the bottom up (eg. A5-B3-A2): ");
             var userNumber = Console.ReadLine().Split('-');
             return userNumber;
         }
@@ -21,12 +21,12 @@ namespace Checkpoint01.AmandaWesterlund
                 var intNumber = int.Parse(number);
                 for (var i = 0; i <= intNumber; i++)
                 {
-                    WriteStars(i);
+                    WriteTopUpTriangle(i);
                 }
             }
         }
 
-        static void WriteStars(int i)
+        static void WriteTopUpTriangle(int i)
         {
             for (var j = 0; j < i; j++)
             {
@@ -34,76 +34,107 @@ namespace Checkpoint01.AmandaWesterlund
             }
             Console.WriteLine("");
         }
+
+        static void WriteBottomUpTriangle(int i)
+        {
+            for (var j = i; j > 0; j--)
+            {
+                Console.Write("*");
+            }
+            Console.WriteLine("");
+        }
         public void Run()
         {
-            //string[] userNumber = GreetUser();
-            //MakeStars(userNumber);
-
-
-            Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
-            var userNumber = Console.ReadLine().Split('-');
+            //Kalla på metoder för att köra version 2. //MakeStars(userNumber);
+            string[] userNumber = GreetUser();
             
 
+
+            //Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
+            //var userNumber = Console.ReadLine().Split('-');
+            
             foreach (var character in userNumber)
             {
                 var number = Convert.ToInt32(character.Substring(1, character.Length - 1));
                 if (character[0] == 'A')
                 {
-                    for (var i = 0; i <= number; i++)
+                    for (var i = 1; i <= number; i++)
                     {
-                        for (var j = 0; j < i; j++)
-                        {
-                            Console.Write("*");
-                        }
-
-                        Console.WriteLine("");
+                        WriteTopUpTriangle(i);
+                        
                     }
                 }
                 else if (character[0] == 'B')
                 {
                     for (var i = number; i > 0; i--)
                     {
-                        for (var j = i; j > 0; j--)
-                        {
-                            Console.Write("*");
-                        }
-                        Console.WriteLine("");
+                        WriteBottomUpTriangle(i);
                     }
                 }
-
+                //version 3, KING, men utan metoder.
                 /*
-                //version 3, upp till 9.
                 Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
-            var userNumber = Console.ReadLine().Split('-');
+                var userNumber = Console.ReadLine().Split('-');
 
-            foreach (var character in userNumber)
-            {
-                var number = Convert.ToInt32(character[1].ToString());
-                
-                if (character[0] == 'A')
+                foreach (var character in userNumber)
                 {
-                    for (var i = 0; i <= number; i++)
+                    var number = Convert.ToInt32(character.Substring(1, character.Length - 1));
+                    if (character[0] == 'A')
                     {
-                        for (var j = 0; j < i; j++)
+                        for (var i = 0; i <= number; i++)
                         {
-                            Console.Write("*");
+                            for (var j = 0; j < i; j++)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine("");
                         }
-                        Console.WriteLine("");
                     }
-                }
-                else if (character[0] == 'B')
+                    else if (character[0] == 'B')
+                    {
+                        for (var i = number; i > 0; i--)
+                        {
+                            for (var j = i; j > 0; j--)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine("");
+                        }
+                    }
+                    */
+                    /*
+                    //version 3, fungerar bara upp till 9.
+                    Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
+                var userNumber = Console.ReadLine().Split('-');
+
+                foreach (var character in userNumber)
                 {
-                    for (var i = number; i > 0; i--)
+                    var number = Convert.ToInt32(character[1].ToString());
+
+                    if (character[0] == 'A')
                     {
-                        for (var j = i; j > 0; j--)
+                        for (var i = 0; i <= number; i++)
                         {
-                            Console.Write("*");
+                            for (var j = 0; j < i; j++)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine("");
                         }
-                        Console.WriteLine("");
                     }
+                    else if (character[0] == 'B')
+                    {
+                        for (var i = number; i > 0; i--)
+                        {
+                            for (var j = i; j > 0; j--)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine("");
+                        }
+                    }
+                    */
                 }
-                */
-        }
                 /*
             foreach (var number in userNumber)
             {
