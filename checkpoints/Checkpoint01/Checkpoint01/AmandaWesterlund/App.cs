@@ -1,30 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Checkpoint01.AmandaWesterlund
 {
     class App
     {
-        public void Run()
+        static string[] GreetUser()
         {
-            
-            //Version 2
             Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
             var userNumber = Console.ReadLine().Split('-');
-            
+            return userNumber;
+        }
+
+        static void WriteStars(string[] userNumber)
+        {
             foreach (var number in userNumber)
             {
                 var intNumber = int.Parse(number);
-                for (var row = 0; row <= intNumber; row++)
+                for (var i = 0; i <= intNumber; i++)
                 {
-                    for (var column = 0; column < row; column++)
+                    for (var j = 0; j < i; j++)
                     {
                         Console.Write("*");
                     }
                     Console.WriteLine("");
                 }
             }
+        }
+        public void Run()
+        {
+            
+            //Version 2
+
+            //Console.Write("Write numbers separated by hyphens (eg. 5-3-2) to make triangles of that size: ");
+            //var userNumber = Console.ReadLine().Split('-');
+            string[] userNumber = GreetUser();
+            WriteStars(userNumber);
+            /*
+            foreach (var number in userNumber)
+            {
+                var intNumber = int.Parse(number);
+                for (var i = 0; i <= intNumber; i++)
+                {
+                    for (var j = 0; j < i; j++)
+                    {
+                        Console.Write("*");
+                    }
+                    Console.WriteLine("");
+                }
+            }
+            */
             
 
             /*
