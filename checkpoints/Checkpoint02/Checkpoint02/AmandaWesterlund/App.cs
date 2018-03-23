@@ -12,18 +12,17 @@ namespace Checkpoint02.AmandaWesterlund
             //userRooms[0] = r1;
             Room home1 = new Room("Vardagsrum", "Toa", "Sovrum");
             Room home2 = new Room(userRooms[0], userRooms[1], userRooms[2]);
-            //Console.WriteLine(home1);
-            Console.WriteLine(home2);
+            //home1.GetRoom();
+            home2.GetRoom();
         }
 
         public string[] GreetUser()
         {
             //List<string> rooms = new List<string>();
-            Console.WriteLine("Ange namn på tre rum, separerade med '|' (Kök|Toa|Vardagsrum)");
+            Console.WriteLine("Ange namn på tre rum, separerade med '|' (Kök|Toa|Vardagsrum): ");
             var userRooms = Console.ReadLine().Trim().Split('|');
             var userRoom = userRooms.ToString();
             //rooms.Add(userRoom);
-            Console.WriteLine(userRooms[1]);
             return userRooms;
            // return userRoom;
 
@@ -41,7 +40,13 @@ namespace Checkpoint02.AmandaWesterlund
             R2 = r2;
             R3 = r3;
         }
-        
+
+        public void GetRoom()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"* Rumsnamn 1: {R1}\n* Rumsnamn 2: {R2}\n* Rumsnamn 3: {R3}");
+            Console.ResetColor();
+        }
 
 
     }
