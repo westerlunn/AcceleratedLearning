@@ -9,11 +9,18 @@ namespace Checkpoint02.AmandaWesterlund
         public void Run()
         {
             string[] userRooms = GreetUser();
-            //userRooms[0] = r1;
-            Room home1 = new Room("Vardagsrum", "Toa", "Sovrum");
-            Room home2 = new Room(userRooms[0], userRooms[1], userRooms[2]);
-            //home1.GetRoom();
-            home2.GetRoom();
+            Room[] roomArray = new Room[userRooms.Length];
+            for (var i = 0; i < userRooms.Length; i++)
+            {
+                Room room = new Room(userRooms[i]);
+                room.PrintRoom();
+            }
+            Room r1 = new Room(userRooms[0]);
+            Room r2 = new Room(userRooms[1]);
+            Room r3 = new Room(userRooms[2]);
+            r1.PrintRoom();
+            r2.PrintRoom();
+            r3.PrintRoom();
         }
 
         public string[] GreetUser()
@@ -27,24 +34,27 @@ namespace Checkpoint02.AmandaWesterlund
            // return userRoom;
 
         }
+
+        
+
     }
     public class Room
     {
-        public string R1 { get; set; }
-        public string R2 { get; set; }
-        public string R3 { get; set; }
+        public string Name { get; set; }
+        public string Area { get; set; }
+        public string LampSwitch { get; set; }
         
-        public Room(string r1, string r2, string r3)
+        public Room(string name)
         {
-            R1 = r1;
-            R2 = r2;
-            R3 = r3;
+            Name = name;
+            
         }
 
-        public void GetRoom()
+        public void PrintRoom()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"* Rumsnamn 1: {R1}\n* Rumsnamn 2: {R2}\n* Rumsnamn 3: {R3}");
+            Console.WriteLine($"Rumsnamn 1: {Name}");
+            //Console.WriteLine($"* Rumsnamn 1: {R1}\n* Rumsnamn 2: {R2}\n* Rumsnamn 3: {R3}");
             Console.ResetColor();
         }
 
