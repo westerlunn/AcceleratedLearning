@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -13,6 +14,7 @@ namespace Checkpoint02.AmandaWesterlund
         {
             string[] userRooms = GreetUser();
             Room[] roomArray = new Room[userRooms.Length];
+            //MakeRoom(userRooms);
             bool resultMatch = CheckUserInputFormat(userRooms);
             if (!resultMatch)
             {
@@ -36,11 +38,11 @@ namespace Checkpoint02.AmandaWesterlund
                 }
             }
             */
-
+            
             for (var i = 0; i < userRooms.Length; i++)
             {
                 var splitRoom = userRooms[i].Replace("m2", "").Split(' ', StringSplitOptions.RemoveEmptyEntries); //
-                
+                 
                 countParts = splitRoom.Length;
                 
                 //Room room = new Room(splitRoom[0], int.Parse(splitRoom[1]));
@@ -60,6 +62,7 @@ namespace Checkpoint02.AmandaWesterlund
                 roomArray[i] = new Room(splitRoom[0], int.Parse(splitRoom[1]), lightOn);
                 roomArray[i].PrintRoom();
             }
+            
             if (countParts != 3)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -115,7 +118,6 @@ namespace Checkpoint02.AmandaWesterlund
                 Console.WriteLine($"Ljuset är tänt i {String.Join(" och ", roomsWithLightOn)}");
                 Console.ResetColor();
             }
-
             //roomArray[1]
             /*
             Room r1 = new Room(userRooms[0]);
@@ -165,7 +167,39 @@ namespace Checkpoint02.AmandaWesterlund
             Console.WriteLine("The input was not in the right format");
             Console.ResetColor();
         }
+        /*
+        public Room[] MakeRoom(string[] userRooms)
+        {
+            Room[] roomArray = new Room[userRooms.Length];
+            bool lightInputValid = true;
+            int countParts = 0;
+            for (var i = 0; i < userRooms.Length; i++)
+            {
+                var splitRoom = userRooms[i].Replace("m2", "").Split(' ', StringSplitOptions.RemoveEmptyEntries); //
 
+                countParts = splitRoom.Length;
+
+                //Room room = new Room(splitRoom[0], int.Parse(splitRoom[1]));
+                //roomArray[i] = room;
+                //room.PrintRoom();
+
+                bool lightOn = false;
+                if (splitRoom[2].ToLower() == "on")
+                {
+                    lightOn = true;
+                }
+                else if (splitRoom[2].ToLower() != "off")
+                {
+                    lightInputValid = false;
+                }
+
+                roomArray[i] = new Room(splitRoom[0], int.Parse(splitRoom[1]), lightOn);
+                roomArray[i].PrintRoom();
+            }
+
+            return roomArray;
+        }
+        */
         public class Room
         {
             public string Name { get; set; }
@@ -178,6 +212,8 @@ namespace Checkpoint02.AmandaWesterlund
                 Area = area;
                 LampSwitch = lampSwitch;
             }
+
+           
 
             public void PrintRoom()
             {
