@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace KrypteringFromRovarspraket
 {
@@ -9,86 +10,92 @@ namespace KrypteringFromRovarspraket
         {
             GreetUser();
             var userInputRovarspraket = GetUserInputOnRovarspraket();
-            //List<string> translatedInput = TranslateFromRovarspraket(userInputRovarspraket);
-            //PrintTranslatedToNormal(translatedInput);
-
-            //var translated = TranslateFromRovarspraket(userInputRovarspraket);
-            //Console.WriteLine(translated);
-            var translated = TranslateFromRovar(userInputRovarspraket);
+            var translated = AddAllowedCharsToString(userInputRovarspraket);
             Console.WriteLine(translated);
 
-            void GreetUser()
+        }
+
+        public static void GreetUser()
+        {
+            Console.Write("Skriv på rövarspråket: ");
+        }
+
+        public static string GetUserInputOnRovarspraket() => Console.ReadLine();
+
+        /*
+        public static string TranslateFromRovarspraket(string userInput)  //string instead of List<string> //Not using
+        {
+            var vowels = new List<char> { 'a', 'e', 'i', 'y', 'u', 'å', 'ä', 'ö', 'o' };
+
+            var translatedInputToNormal = new List<string>();
+            var stringWithRemovedChars = "";
+
+            foreach (var character in userInput)
             {
-                Console.Write("Skriv på rövarspråket: ");
-            }
-
-            string GetUserInputOnRovarspraket() => Console.ReadLine();
-
-            string TranslateFromRovarspraket(string userInput)  //string instead of List<string>
-            {
-                var vowels = new List<char> {'a', 'e', 'i', 'y', 'u', 'å', 'ä', 'ö', 'o'};
-                
-                var translatedInputToNormal = new List<string>();
-                var stringWithRemovedChars = "";  
-
-                foreach (var character in userInput)
+                if (vowels.Contains(character))
                 {
-                    if (vowels.Contains(character))
-                    {
-                        translatedInputToNormal.Add(character.ToString());
-                    }
-
-                    if (!vowels.Contains(character))
-                    {
-                        translatedInputToNormal.Add(character.ToString());
-                        stringWithRemovedChars = userInput.Remove(userInput.IndexOf(character) + 1, userInput.IndexOf(character) + 1);
-                        break;
-
-                    }
-
-                }
-                return stringWithRemovedChars;
-                //return translatedInputToNormal;
-            }
-
-            string TranslateFromRovar(string userInput)
-            {
-                var vowels = new List<char> { 'a', 'e', 'i', 'y', 'u', 'å', 'ä', 'ö', 'o', 'Å', 'Ä', 'Ö', 'A', 'E', 'I', 'Y', 'U', 'O' };
-                bool charIsConsonant;
-                string allowedChars = "";
-
-                for (int i = 0; i < userInput.Length; i++)
-                {
-                    charIsConsonant = true;
-                    for (int j = 0; j < vowels.Count; j++)
-                    {
-                        if (userInput[i] == vowels[j])
-                        {
-                            charIsConsonant = false;
-                        }
-                    }
-
-                    if (charIsConsonant && char.IsLetter(userInput[i]))
-                    {
-                        allowedChars = allowedChars + userInput[i];
-                        i = i + 2;
-                    }
-                    else
-                    {
-                        allowedChars = allowedChars + userInput[i];
-                    }
+                    translatedInputToNormal.Add(character.ToString());
                 }
 
-                return allowedChars;
+                if (!vowels.Contains(character))
+                {
+                    translatedInputToNormal.Add(character.ToString());
+                    stringWithRemovedChars = userInput.Remove(userInput.IndexOf(character) + 1, userInput.IndexOf(character) + 1);
+                    break;
+                }
+            }
+            return stringWithRemovedChars;
+            //return translatedInputToNormal;
+        }
+        */
+
+        public static string AddAllowedCharsToString(string userInput) 
+        {
+            string allowedChars = "";
+
+            for (int i = 0; i < userInput.Length; i++)
+            {
+
+                bool charIsConsonant = CheckIfInputAreVowels(userInput[i]);
+
+                if (charIsConsonant && char.IsLetter(userInput[i]))    
+                {
+                    allowedChars = allowedChars + userInput[i];
+                    i = i + 2;
+                }
+                else
+                {
+                    allowedChars = allowedChars + userInput[i];
+                }
             }
 
-            void PrintTranslatedToNormal(string translatedInputToNormal) //List<string>
+            return allowedChars;
+        }
+
+        public static bool CheckIfInputAreVowels(char userInput)
+        {
+            var vowels = "aeiyuåäöoÅÄÖAEIYUO";
+            bool charIsConsonant;
+
+            charIsConsonant = true;
+            for (int j = 0; j < vowels.Length; j++)
             {
-                foreach (var character in translatedInputToNormal)
+                if (userInput == vowels[j])
                 {
-                    Console.Write(character);
+                    charIsConsonant = false;
                 }
+            }
+
+            return charIsConsonant;
+        }
+
+        public static void PrintTranslatedToNormal(string translatedInputToNormal) //List<string>
+        {
+            foreach (var character in translatedInputToNormal)
+            {
+                Console.Write(character);
             }
         }
     }
 }
+
