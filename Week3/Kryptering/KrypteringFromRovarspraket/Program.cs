@@ -42,7 +42,7 @@ namespace KrypteringFromRovarspraket
                     {
                         var rovarPart = userInput.Substring(i, 3); 
 
-                        if (rovarPart[1] == 'o' & rovarPart[2] == rovarPart[0])
+                        if ((rovarPart[1] == 'o' || rovarPart[1] == 'O') & rovarPart[2] == rovarPart[0])
                         {
                             i = i + 2;
                         }
