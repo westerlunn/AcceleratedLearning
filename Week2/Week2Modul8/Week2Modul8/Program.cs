@@ -12,11 +12,12 @@ namespace Week2Modul8
 
     class Program
     {
-        static void GreetUser()
+        static decimal GreetUser()
         {
             Console.WriteLine("The chocolate contains 24 pieces");
             Console.Write("How many like to share? ");
             var peopleToShare = Convert.ToDecimal(Console.ReadLine());
+            return peopleToShare;
         }
         static void Process(decimal peopleToShare)
         {
@@ -27,10 +28,11 @@ namespace Week2Modul8
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("The chocolate contains 24 pieces");
-            Console.Write("How many like to share? ");
-            var peopleToShare = Convert.ToDecimal(Console.ReadLine());
-            //GreetUser(peopleToShare);
+            //Console.WriteLine("The chocolate contains 24 pieces");
+            //Console.Write("How many like to share? ");
+            //var peopleToShare = Convert.ToDecimal(Console.ReadLine());
+            decimal peopleToShare = GreetUser();
+
             try
             {
                 Process(peopleToShare);

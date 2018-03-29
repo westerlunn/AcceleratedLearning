@@ -18,6 +18,16 @@ namespace Modul8._2
                 Console.WriteLine("error");
                 //throw;
             }
+
+            try
+            {
+
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Console.WriteLine("Unauthorized");
+                throw;
+            }
             
         }
     }
