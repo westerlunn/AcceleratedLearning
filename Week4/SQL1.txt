@@ -1,0 +1,12 @@
+select Title from Album
+where Title like '_ar%'
+
+7.
+select Title from Album
+where Title like '[aeiouyåäö]%'
+
+8.
+select Album.Title, Artist.Name
+from Artist
+inner join Album on Album.ArtistId = Artist.ArtistId
+
