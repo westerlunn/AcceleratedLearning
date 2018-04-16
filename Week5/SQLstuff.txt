@@ -1,0 +1,8 @@
+SELECT Customer.ID, firstName, lastName, email,
+STUFF((SELECT cast(', ' AS nvarchar(MAX)) + PhoneNumbers.phoneNumber
+                FROM PhoneNumbers
+                WHERE Customer.ID = PhoneNumbers.customerID
+                FOR XML PATH('')
+				), 1, 1, '') AS phoneNumber
+				FROM Customer
+				

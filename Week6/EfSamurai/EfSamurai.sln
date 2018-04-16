@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfSamurai", "EfSamurai\EfSamurai.csproj", "{EDDD54CF-F5BA-4FF6-9189-BDB3C2A95FB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDDD54CF-F5BA-4FF6-9189-BDB3C2A95FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDDD54CF-F5BA-4FF6-9189-BDB3C2A95FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDDD54CF-F5BA-4FF6-9189-BDB3C2A95FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDDD54CF-F5BA-4FF6-9189-BDB3C2A95FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2D2727E-3260-496E-BEF9-AA5C2DD98A3E}
+	EndGlobalSection
+EndGlobal
