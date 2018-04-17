@@ -33,6 +33,7 @@ namespace EfSamurai
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public BattleLog BattleLog { get; set; }
+        public ICollection<SamuraiBattle> SamuraiBattles { get; set; }  
     }
     public class RealIdentity
     {
@@ -55,6 +56,7 @@ namespace EfSamurai
         public int Id { get; set; }
         public string QuoteString { get; set; }
         public QuoteType QuoteType { get; set; }
+        public Samurai Samurai { get; set; }
     }
     public class Samurai
     {
@@ -64,7 +66,7 @@ namespace EfSamurai
         public List<Quote> Quote { get; set; }
         public HairStyle HairStyle { get; set; }
         public RealIdentity RealIdentity { get; set; }
-        
+        public ICollection<SamuraiBattle> SamuraiBattles { get; set; }
         
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfSamurai
 {
@@ -16,6 +17,21 @@ namespace EfSamurai
         {
             modelBuilder.Entity<SamuraiBattle>()
                 .HasKey(sb => new { sb.SamuraiId, sb.BattleId });
+
+            //Solve cascade issues
+            /*
+            modelBuilder.Entity<Samurai>()
+                .HasMany(x => x.Quote)
+                .WithOne(x => x.Samurai)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Samurai>()
+                .HasMany(x => x.Quote)
+                .WithOne(x => x.Samurai)
+                .OnDelete(DeleteBehavior.Cascade);
+                */
         }
+
+        
     }
 }
