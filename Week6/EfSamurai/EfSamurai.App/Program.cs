@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EfSamurai;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +12,10 @@ namespace EfSamurai.App
         {
             //AddSomeSamurais();
             //AddSomeBattles();
-            AddOneSamuraiWithRelatedData();
+            //AddOneSamuraiWithRelatedData();
             //ClearDatabase();
+            ListAllSamuraiNames();
+            ListAllSamuraiNames_OrderByNames();
         }
 
         private static void AddOneSamurai()
@@ -132,7 +135,6 @@ namespace EfSamurai.App
             var listOfTableNames = new List<string>();
             listOfTableNames.Add("Quote");
             listOfTableNames.Add("QuoteType");
-            //listOfTableNames.Add("SamuraiBattle");
             listOfTableNames.Add("Samurais");
             listOfTableNames.Add("HairStyle");
             listOfTableNames.Add("BattleEvent");
@@ -146,14 +148,38 @@ namespace EfSamurai.App
                 foreach (var tableName in listOfTableNames)
                 {
                     context.Database.ExecuteSqlCommand("DELETE FROM [" + tableName + "] DBCC CHECKIDENT (["+ tableName +"], RESEED, 0)");
-                    //context.Database.ExecuteSqlCommand("DELETE FROM [" + tableName + "]");
-                    //+
-                    //"DBCC CHECKIDENT (EfSamurai.dbo.["+ tableName +"], RESEED, [0|1])");
+                    
                 }
 
                 context.SaveChanges();
             }
                 
+        }
+
+        private static void ListAllSamuraiNames()
+        {
+            using (var context = new SamuraiContext())
+            {
+                Console.WriteLine("Samurai names:");
+                var samurais = context.Samurais.ToList();
+                foreach (var samurai in samurais)
+                {
+                    Console.WriteLine(samurai.Name);
+                }
+            }
+        }
+
+        private static void ListAllSamuraiNames_OrderByNames()
+        {
+            Console.WriteLine("Samurai names ordered by names:");
+            using (var context = new SamuraiContext())
+            {
+                var samurais = context.Samurais.OrderBy(Samurais => Samurais.Name).ToList();
+                foreach (var samurai in samurais)
+                {
+                    Console.WriteLine(samurai.Name);
+                }
+            }
         }
     }
 }
