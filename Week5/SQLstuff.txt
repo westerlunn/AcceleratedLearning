@@ -6,3 +6,20 @@ STUFF((SELECT cast(', ' AS nvarchar(MAX)) + PhoneNumbers.phoneNumber
 				), 1, 1, '') AS phoneNumber
 				FROM Customer
 				
+				
+				
+--UPDATE Customer SET firstName = 'Helen', lastName = 'Tomsson', email = 'helent@mail.se' WHERE Customer.ID = 19;
+--UPDATE PhoneNumbers SET phoneNumber = '0708987887' WHERE customerID = 19;
+
+--DELETE FROM PhoneNumbers 
+--where customerID = 18;
+--DELETE FROM Customer
+--WHERE Customer.ID = 18;
+
+--left join PhoneNumbers ON Customer.ID = customerID
+--where Customer.ID = 18;
+
+--select * from Customer
+--left join PhoneNumbers ON Customer.ID = customerID
+--where Customer.ID = 18
+--full join phonenumbers on CustomerID = Customer.ID

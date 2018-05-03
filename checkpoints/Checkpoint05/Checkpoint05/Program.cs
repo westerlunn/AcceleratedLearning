@@ -11,43 +11,38 @@ namespace Checkpoint05
         static void Main(string[] args)
         {
             RecreateDatabase();
-            AddSpaceship("Millenium Falcon");
+
+            AddSpaceship("USS Enterprise");
+            AddSpaceship("Millennium Falcon");
             AddSpaceship("Cylon Raider");
-            AddSpaceship("Spaceship XX");
 
-            AddRavioliForSpaceship("Cylon Raider", 1, new DateTime(2017, 12, 3));
-            AddRavioliForSpaceship("Millennium Falcon", 3, DateTime.Now);
+            AddRavioliForSpaceship("Cylon Raider", 1, "2018-04-19");
+            AddRavioliForSpaceship("Millennium Falcon", 1, "2017-01-01");
+            AddRavioliForSpaceship("Millennium Falcon", 2, "2018-01-01");
+            AddRavioliForSpaceship("Nalle Puh", 99, "1950-01-01");
 
-
-            var list = GetAllSpaceships();
+            List<Spaceship> list = GetAllSpaceships();
             DisplaySpaceships(list);
-            
+
         }
         
-        private static void AddRavioliForSpaceship(string spaceship, int ravioliAmount, DateTime packageDate)
+        private static void AddRavioliForSpaceship(string spaceship, int ravioliAmount, string packingDate)
         {
-            var list = new List<Ravioli>();
-
-
-            ravioliAmount = 0;
+            var packingDateTime = ConvertStringToDateTime(packingDate);
             
             using (var context = new SpaceshipContext())
             {
-                var selectedSpaceship = context.Spaceships.FirstOrDefault(x => x.Name == spaceship);
-                for (var i = 0; i < ravioliAmount; i++)
+                var selectedSpaceship = context.Spaceships.Include(s => s.Ravioli).FirstOrDefault(s => s.Name == spaceship);
+
+                if (selectedSpaceship != null)
                 {
-                    selectedSpaceship.Ravioli.Add(new Ravioli { Spaceship = selectedSpaceship, PackingDate = packageDate });
-
+                    for (var i = 0; i < ravioliAmount; i++)
+                    {
+                        selectedSpaceship.Ravioli.Add(new Ravioli { Spaceship = selectedSpaceship, PackingDate = packingDateTime });
+                    }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
             }
-            /*
-            using (var context = new SpaceshipContext())
-            {
-
-                var ravioli = context.Spaceships.Include(x => x.Ravioli)
-            }
-            */
         }
         
         private static void RecreateDatabase()
@@ -56,17 +51,6 @@ namespace Checkpoint05
             {
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-            }
-        }
-
-        private static void MakeSpaceship()
-        {
-            var spaceship = new Spaceship() { Name = "Millenium Falcon" };
-
-            using (var context = new SpaceshipContext())
-            {
-                context.Spaceships.Add(spaceship);
-                context.SaveChanges();
             }
         }
 
@@ -83,59 +67,45 @@ namespace Checkpoint05
             }
         }
 
-        
-
         private static List<Spaceship> GetAllSpaceships()
         {
             using (var context = new SpaceshipContext())
             {
-                var spaceships = context.Spaceships.ToList();
+                var spaceships = context.Spaceships.Include(s => s.Ravioli).ToList();
                 return spaceships;
             }
         }
 
-        private static void DisplaySpaceships(List<Spaceship> spaceships) //, List<Ravioli> list)
+        private static void DisplaySpaceships(List<Spaceship> spaceships)
         {
             foreach (var spaceship in spaceships)
             {
                 Console.WriteLine(spaceship.Name);
                 WriteRavioli(spaceship.Ravioli);
-                /*
-                if (raviolis != null)
-                {
-                    foreach (var ravioli in raviolis)
-                    {
-                        Console.WriteLine("Ravioli");
-                    }
-                }
-
-                if (raviolis == null)
-                {
-                    Console.WriteLine("Slut på ravioli");
-                }
-                */
             }
         }
 
         private static void WriteRavioli(List<Ravioli> raviolis) 
         {
-            if (raviolis != null)
+            if (raviolis.Count != 0) 
             {
                 foreach (var ravioli in raviolis)
                 {
-                    Console.WriteLine($"Ravioli, {ravioli.PackingDate}");
+                    Console.WriteLine($"Ravioli, {ravioli.PackingDate}, {ravioli.ExpiryDate}");
                 }
             }
 
-            if (raviolis == null)
+            else
             {
                 Console.WriteLine("Slut på ravioli");
             }
         }
 
+        private static DateTime ConvertStringToDateTime(string date)
+        {
+            return Convert.ToDateTime(date);
+        }
     }
-
-
 }
 
 
