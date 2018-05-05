@@ -16,7 +16,7 @@ namespace Nyhetsapp.Controllers
             _newsRepository = newsRepository;
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult Add(News news)
         {
             if (news == null)
@@ -35,6 +35,13 @@ namespace Nyhetsapp.Controllers
             _newsRepository.Add(news);
 
             return Ok(news.Id);
+        }
+
+        [HttpGet("count")]
+        public IActionResult Count()
+        {
+            int numberOfNews = _newsRepository.Count();
+            return Ok(numberOfNews);
         }
 
 

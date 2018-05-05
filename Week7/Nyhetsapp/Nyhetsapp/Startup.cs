@@ -38,9 +38,15 @@ namespace Nyhetsapp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseStaticFiles();
+            app.UseStatusCodePages();
             app.UseDirectoryBrowser();
             app.UseMvc();
         }

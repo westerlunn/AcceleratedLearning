@@ -5,7 +5,7 @@
     var body = $("[name = body]", form).val();
 
     $.ajax({
-            url: '/News/',
+            url: '/news/add',
             method: 'POST',
             data: {
                 "Header": header,
@@ -19,5 +19,21 @@
             .fail(function(xhr, status, error) {
                 handleError(xhr, status, error);
             });
+});
+
+$("#countButton").click(function() {
+    $.ajax({
+            url: '/news/count',
+            method: 'GET'
+        })
+        .done(function (result) {
+            alert(`Number of news: ${result}`);
+        })
+        .fail(function(xhr, status, error) {
+            alert("Nu blev det fel");
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+        });
 });
 

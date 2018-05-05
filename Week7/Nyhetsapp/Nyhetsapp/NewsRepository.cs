@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Nyhetsapp
 {
@@ -23,6 +24,11 @@ namespace Nyhetsapp
         {
             Console.WriteLine("Tja");
             throw new NotImplementedException();
+        }
+
+        public int Count()
+        {
+            return context.News.ToList().Count;
         }
 
 

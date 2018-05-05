@@ -8,7 +8,7 @@ namespace Nyhetsapp
         void Delete(int id);
         void Update(News news);
         //bool NewsExists();
-        //int Count();
+        int Count();
         //IEnumerable<News> GetAllNews();
     }
 }
