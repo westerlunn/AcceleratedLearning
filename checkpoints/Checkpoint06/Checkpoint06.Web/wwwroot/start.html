@@ -4,22 +4,53 @@
     <title>Fågelskådning</title>
 
 </head>
+
+<style>
+    table{ width: 100%; }
+    table, td, th {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+     
+
+</style>
+
 <body>
     <h1>Fågelskådning</h1>
     <h3>Lägg till en observation</h3>
-Art: <input type="text" id="species" />
-Datum: <input type="text" id="date" />
-Plats: <input type="text" id="place" />
-Anteckningar: <input type="text" id="notes" />
+    Art: <br/> <input type="text" id="species" /> <br />
+    Datum:<br/> <input type="date" id="date" /> <br />
+    Plats:<br/> <input type="text" id="place" /> <br />
+    Anteckningar:<br/> <input type="text" id="notes" /> <br/>
 
-<button id="speciesButton">Ok</button>
+    <button id="speciesButton">Ok</button>
 
     <h3>Visa alla observationer</h3>
-        <button id="viewButton">Ok</button>
-<hr />
+    <button id="viewButton">Ok</button>
+    <hr />
 
-<div id="view"></div>
-    <!--<button>Observationer</button>-->
+    <div id="view">
+       
+    </div>
+    <a href="start.html">start.html</a>
+<!--<button>Observationer</button>
+<h2>HTML Table</h2>
+
+<table>
+    <tr>
+        <th>Art</th>
+        <th>Datum</th>
+        <th>Plats</th>
+        <th>Anteckningar</th>
+    </tr>
+    <tr>
+        <td>(species)</td>
+        <td>{date}</td>
+        <td>(place)</td>
+        <td>notes</td>
+    </tr>
+</table>
+-->
 
 
 
