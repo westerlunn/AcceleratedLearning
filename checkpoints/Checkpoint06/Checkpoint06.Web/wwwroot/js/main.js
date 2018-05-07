@@ -19,8 +19,10 @@ $("#speciesButton").click(function () {
         })
         .done(function (result) {
             alert("Art tillagd");
-
+            showObservations();
+            showSpecies();
         })
+        
         .fail(function (xhr, status, error) {
             alert(`${xhr.responseText}`);
             console.log("status", status);
@@ -31,30 +33,55 @@ $("#speciesButton").click(function () {
 });
 
 
-$("#viewButton").click(function () {
-  
-    
+//$("#viewButton").click(showObservations());
+
+
+function showObservations() {
+
     $.ajax({
-        url: '/birds/viewObservations',
-        
-        method: 'get',
-        success: function (result) {
+            url: '/birds/viewObservations',
+            method: 'get'
+        })
+        .done(function(result) {
             $("#view").html(`<h3>Observationer:</h3> 
-<table>
-            <tr>
-                <th>Art</th>
-                <th>Datum</th>
-                <th>Plats</th>
-                <th>Anteckningar</th>
-            </tr> ${result}`);
-        },
-        error: function (xhr, status, error) {
+            <table>
+                <tr>
+                    <th>Art</th>
+                    <th>Datum</th>
+                    <th>Plats</th>  
+                    <th>Anteckningar</th>
+                </tr>
+                ${result}
+            </table>`);
+        })
+        .fail(function(xhr, status, error) {
             alert("Nu blev det fel");
             console.log(xhr);
             console.log(status);
             console.log(error);
-        }
-    });
+        });
+}
+
+function showSpecies() {
+
+        $.ajax({
+            url: '/birds/viewSpecies',
+                method: 'get'
+            })
+            .done(function (result) {
+                $("#viewSpecies").html(`<h3>Arter:</h3> 
+            <table>
+               
+                ${result}
+            </table>`);
+            })
+            .fail(function (xhr, status, error) {
+                alert("Nu blev det fel");
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            });
+}
     
     /*
     $.ajax({
@@ -73,4 +100,3 @@ $("#viewButton").click(function () {
 
         });
         */
-});
