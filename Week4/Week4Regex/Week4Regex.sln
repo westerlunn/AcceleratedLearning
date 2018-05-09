@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4Regex", "Week4Regex\Week4Regex.csproj", "{3C278FE3-4ED8-4871-8F8E-8C7A1D62F15D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week4Regex", "Week4Regex\Week4Regex.csproj", "{3C278FE3-4ED8-4871-8F8E-8C7A1D62F15D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regex3", "Regex3\Regex3.csproj", "{868267DF-455C-410A-A79A-8D13265EDC71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3C278FE3-4ED8-4871-8F8E-8C7A1D62F15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C278FE3-4ED8-4871-8F8E-8C7A1D62F15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C278FE3-4ED8-4871-8F8E-8C7A1D62F15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{868267DF-455C-410A-A79A-8D13265EDC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868267DF-455C-410A-A79A-8D13265EDC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868267DF-455C-410A-A79A-8D13265EDC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868267DF-455C-410A-A79A-8D13265EDC71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

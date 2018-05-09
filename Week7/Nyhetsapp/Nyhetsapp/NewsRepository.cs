@@ -32,6 +32,7 @@ namespace Nyhetsapp
         }
 
 
+
         //int INewsRepository.Count()
         //{
         //    throw new NotImplementedException();

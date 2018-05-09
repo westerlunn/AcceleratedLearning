@@ -37,5 +37,6 @@ namespace Week4Regex
             bool match = Regex.IsMatch(productName, @"(^[A-Z]{2}-[\d]{3}-[\d]{3}$)");
             return match;
         }
+    
     }
 }

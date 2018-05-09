@@ -24,22 +24,38 @@ namespace Checkpoint06.Web
             }
         }
 
+        /*
+        public bool CheckIfSpeciesLocationAndDayIsTheSame(Observation observation)
+        {
+            bool speciesLocationAndDayIsTheSame;
+
+            using (var context = new ObservationContext())
+            {
+                var list = context.Observations.ToList();
+                foreach (var obs in list)
+                {
+                    if ()
+                }
+            }
+
+            return Ok(speciesLocationAndDayIsTheSame);
+        }
+        */
+
         [HttpGet("viewObservations")]
-        public IActionResult ViewObservations() //IEnumerable<Observation> observations
+        public IActionResult ViewObservations() 
         {
             using (var context = new ObservationContext())
             {
                 var list = context.Observations.OrderBy(o => o.Date).ToList();
                 
                 StringBuilder sb = new StringBuilder();
-                //sb.Append("<table>");
+
                 foreach (var item in list)
                 {
                     sb.AppendFormat($"<tr><td>{item.Species}</td><td>{item.Date}</td><td>{item.Place}</td><td>{item.Notes}</td></tr>", item);
                 }
-                //sb.Append("</table>");
                 return Ok(sb.ToString());
-               
             }
         }
         [HttpGet("viewSpecies")]
@@ -56,8 +72,6 @@ namespace Checkpoint06.Web
                 }
 
                 return Ok(sb.ToString());
-
-
             }
         }
 

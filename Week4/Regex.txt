@@ -11,3 +11,9 @@ Ord
 Produktnamn
 ^[A-Z]{2}-[\d]{3}-[\d]{3}$
 
+ctrl+shift+h = find&replace with regex
+
+
+regex 3
+1. WORKS!!
+\bName = ".*",\s
